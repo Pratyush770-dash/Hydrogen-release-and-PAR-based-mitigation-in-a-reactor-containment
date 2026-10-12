@@ -1,0 +1,351 @@
+<FluentXMLReport>
+<version>
+Fluent
+Version: 3d, dp, pbns, spe, sstkw, transient (3d, double precision, pressure-based,  species, SST k-omega, transient)
+Release: 26.1.0
+Title: 
+</version>
+
+<Models>
+
+Models
+------
+
+   Model                        Settings                       
+   ---------------------------------------------------------
+   Space                        3D                             
+   Time                         Unsteady, 1st-Order Implicit   
+   Viscous                      SST k-omega turbulence model   
+   Heat Transfer                Enabled                        
+   Solidification and Melting   Disabled                       
+   Radiation                    None                           
+   Species                      Non-Reacting (4 species)       
+   Coupled Dispersed Phase      Disabled                       
+   NOx Pollutants               Disabled                       
+   SOx Pollutants               Disabled                       
+   Soot                         Disabled                       
+   Mercury Pollutants           Disabled                       
+   Structure                    Disabled                       
+   Acoustics                    Disabled                       
+   Eulerian Wall Film           Disabled                       
+   Potential/Electrochemistry   Disabled                       
+   Multiphase                   Disabled                       
+
+</Models>
+
+<MaterialProperties>
+Material Properties
+-------------------
+
+   Material: (hydrogen . mixture-template) (fluid)
+
+      Property               Units      Method                 Value(s)                                                                                                                                                   
+      -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      Cp (Specific Heat)     J/(kg K)   piecewise-polynomial   (300-1000: 13602.452 3.4023168 -0.0033584233 -3.9079528e-07 1.7053451e-09) (1000-5000: 12337.526 2.8872753 -0.00023235597 -3.8073793e-08 6.5277423e-12)    
+      Thermal Conductivity   W/(m K)    constant               0.1672                                                                                                                                                     
+      Viscosity              kg/(m s)   constant               8.411e-06                                                                                                                                                  
+      Molecular Weight       kg/kmol    constant               2.01594                                                                                                                                                    
+
+   Material: water-vapor (fluid)
+
+      Property               Units      Method                 Value(s)                                                                                                                                                  
+      ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      Density                kg/m^3     constant               0.5542                                                                                                                                                    
+      Cp (Specific Heat)     J/(kg K)   piecewise-polynomial   (300-1000: 1563.0767 1.6037546 -0.0029327841 3.2161009e-06 -1.1568268e-09) (1000-5000: 1233.2338 1.4105233 -0.00040291411 5.5427718e-08 -2.949824e-12)    
+      Thermal Conductivity   W/(m K)    constant               0.0261                                                                                                                                                    
+      Viscosity              kg/(m s)   constant               1.34e-05                                                                                                                                                  
+      Molecular Weight       kg/kmol    constant               18.01534                                                                                                                                                  
+
+   Material: oxygen (fluid)
+
+      Property               Units      Method                 Value(s)                                                                                                                                                      
+      --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      Density                kg/m^3     constant               1.2999                                                                                                                                                        
+      Cp (Specific Heat)     J/(kg K)   piecewise-polynomial   (300-1000: 834.82647 0.29295801 -0.00014956371 3.4138849e-07 -2.2783585e-10) (1000-5000: 960.75234 0.15941258 -3.2708852e-05 4.6127648e-09 -2.9528324e-13)    
+      Thermal Conductivity   W/(m K)    constant               0.0246                                                                                                                                                        
+      Viscosity              kg/(m s)   constant               1.919e-05                                                                                                                                                     
+      Molecular Weight       kg/kmol    constant               31.9988                                                                                                                                                       
+
+   Material: nitrogen (fluid)
+
+      Property               Units      Method                 Value(s)                                                                                                                                                    
+      ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      Density                kg/m^3     constant               1.138                                                                                                                                                       
+      Cp (Specific Heat)     J/(kg K)   piecewise-polynomial   (300-1000: 979.04298 0.4179639 -0.0011762792 1.6743943e-06 -7.2562971e-10) (1000-5000: 868.62291 0.44162954 -0.00016872295 2.9967875e-08 -2.0043858e-12)    
+      Thermal Conductivity   W/(m K)    constant               0.0242                                                                                                                                                      
+      Viscosity              kg/(m s)   constant               1.663e-05                                                                                                                                                   
+      Molecular Weight       kg/kmol    constant               28.0134                                                                                                                                                     
+
+   Material: hydrogen (fluid)
+
+      Property               Units      Method                 Value(s)                                                                                                                                                   
+      -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      Density                kg/m^3     constant               0.08189                                                                                                                                                    
+      Cp (Specific Heat)     J/(kg K)   piecewise-polynomial   (300-1000: 13602.452 3.4023168 -0.0033584233 -3.9079528e-07 1.7053451e-09) (1000-5000: 12337.526 2.8872753 -0.00023235597 -3.8073793e-08 6.5277423e-12)    
+      Thermal Conductivity   W/(m K)    constant               0.1672                                                                                                                                                     
+      Viscosity              kg/(m s)   constant               8.411e-06                                                                                                                                                  
+      Molecular Weight       kg/kmol    constant               2.01594                                                                                                                                                    
+
+   Material: mixture-template (mixture)
+
+      Property               Units      Method                     Value(s)                 
+      -----------------------------------------------------------------------------------
+      Mixture Species                   names                      ((h2 h2o o2 n2) () ())   
+      Density                kg/m^3     ideal-gas                  #f                       
+      Cp (Specific Heat)     J/(kg K)   mixing-law                 #f                       
+      Thermal Conductivity   W/(m K)    mass-weighted-mixing-law   #f                       
+      Viscosity              kg/(m s)   mass-weighted-mixing-law   #f                       
+      Mass Diffusivity       m^2/s      constant-dilute-appx       (2.88e-05)               
+
+   Material: (nitrogen . mixture-template) (fluid)
+
+      Property               Units      Method                 Value(s)                                                                                                                                                    
+      ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      Cp (Specific Heat)     J/(kg K)   piecewise-polynomial   (300-1000: 979.04298 0.4179639 -0.0011762792 1.6743943e-06 -7.2562971e-10) (1000-5000: 868.62291 0.44162954 -0.00016872295 2.9967875e-08 -2.0043858e-12)    
+      Thermal Conductivity   W/(m K)    constant               0.0242                                                                                                                                                      
+      Viscosity              kg/(m s)   constant               1.663e-05                                                                                                                                                   
+      Molecular Weight       kg/kmol    constant               28.0134                                                                                                                                                     
+
+   Material: (oxygen . mixture-template) (fluid)
+
+      Property               Units      Method                 Value(s)                                                                                                                                                      
+      --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      Cp (Specific Heat)     J/(kg K)   piecewise-polynomial   (300-1000: 834.82647 0.29295801 -0.00014956371 3.4138849e-07 -2.2783585e-10) (1000-5000: 960.75234 0.15941258 -3.2708852e-05 4.6127648e-09 -2.9528324e-13)    
+      Thermal Conductivity   W/(m K)    constant               0.0246                                                                                                                                                        
+      Viscosity              kg/(m s)   constant               1.919e-05                                                                                                                                                     
+      Molecular Weight       kg/kmol    constant               31.9988                                                                                                                                                       
+
+   Material: (water-vapor . mixture-template) (fluid)
+
+      Property               Units      Method                 Value(s)                                                                                                                                                  
+      ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      Cp (Specific Heat)     J/(kg K)   piecewise-polynomial   (300-1000: 1563.0767 1.6037546 -0.0029327841 3.2161009e-06 -1.1568268e-09) (1000-5000: 1233.2338 1.4105233 -0.00040291411 5.5427718e-08 -2.949824e-12)    
+      Thermal Conductivity   W/(m K)    constant               0.0261                                                                                                                                                    
+      Viscosity              kg/(m s)   constant               1.34e-05                                                                                                                                                  
+      Molecular Weight       kg/kmol    constant               18.01534                                                                                                                                                  
+
+   Material: air (fluid)
+
+      Property               Units      Method     Value(s)     
+      -------------------------------------------------------
+      Density                kg/m^3     constant   1.225        
+      Cp (Specific Heat)     J/(kg K)   constant   1006.43      
+      Thermal Conductivity   W/(m K)    constant   0.0242       
+      Viscosity              kg/(m s)   constant   1.7894e-05   
+      Molecular Weight       kg/kmol    constant   28.966       
+
+   Material: aluminum (solid)
+
+      Property               Units      Method     Value(s)   
+      -----------------------------------------------------
+      Density                kg/m^3     constant   2719       
+      Cp (Specific Heat)     J/(kg K)   constant   871        
+      Thermal Conductivity   W/(m K)    constant   202.4      
+
+</MaterialProperties>
+
+<CellZoneConditions>
+Cell Zone Conditions
+--------------------
+
+   Zones
+
+      name                    id   type    material           
+      -----------------------------------------------------
+      body-fluid              6    fluid   mixture-template   
+      body-par_housing_body   7    fluid   mixture-template   
+
+   Setup Conditions
+
+      body-fluid
+
+         Condition       Value              
+         --------------------------------
+         Material Name   mixture-template   
+         Frame Motion?   no                 
+         Mesh Motion?    no                 
+
+      body-par_housing_body
+
+         Condition               Value                                                                                                                                                                 
+         -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+         Material Name           mixture-template                                                                                                                                                      
+         Specify source terms?   yes                                                                                                                                                                   
+         Source Terms            ((mass) (x-momentum) (y-momentum) (z-momentum) (k) (omega) (species-0 ((profile udf par_h2_sink) (inactive . #f) (constant . 0))) (species-1) (species-2) (energy))   
+         Frame Motion?           no                                                                                                                                                                    
+         Mesh Motion?            no                                                                                                                                                                    
+
+</CellZoneConditions>
+
+<BoundaryConditions>
+Boundary Conditions
+-------------------
+
+   Zones
+
+      name                                  id   type              
+      ----------------------------------------------------------
+      release_inlet                         12   mass-flow-inlet   
+      wall-body-fluid                       1    interface         
+      par_interior_outlet                   10   interface         
+      wall-body-fluid-non-overlapping       13   wall              
+      par_interior_outlet-non-overlapping   14   wall              
+      vent_bottom                           11   wall              
+
+   Setup Conditions
+
+      release_inlet
+
+         Condition               Value                                                                                      
+         ----------------------------------------------------------------------------------------------------------------
+         Mass Flow Rate [kg/s]   0.000157                                                                                   
+         Total Temperature [K]   298.15                                                                                     
+                                 (((constant . 1) (profile  )) ((constant . 0) (profile  )) ((constant . 0) (profile  )))   
+
+      wall-body-fluid
+
+         Condition   Value   
+         -----------------
+
+      par_interior_outlet
+
+         Condition   Value                                 
+         -----------------------------------------------
+                     par_interior_outlet-non-overlapping   
+
+      wall-body-fluid-non-overlapping
+
+         Condition                     Value                                                                                      
+         ----------------------------------------------------------------------------------------------------------------------
+         Material Name                 aluminum                                                                                   
+         Thermal BC Type               Heat Flux                                                                                  
+         Wall Motion                   Stationary Wall                                                                            
+         Shear Boundary Condition      No Slip                                                                                    
+         Wall Surface Roughness        Standard                                                                                   
+         Species Boundary Conditions   Specified Flux (Mass)/Specified Flux (Mass)                                                
+                                       (((constant . 0) (profile  )) ((constant . 0) (profile  )) ((constant . 0) (profile  )))   
+
+      par_interior_outlet-non-overlapping
+
+         Condition                     Value                                                                                      
+         ----------------------------------------------------------------------------------------------------------------------
+         Material Name                 aluminum                                                                                   
+         Thermal BC Type               Heat Flux                                                                                  
+         Wall Motion                   Stationary Wall                                                                            
+         Shear Boundary Condition      No Slip                                                                                    
+         Wall Surface Roughness        Standard                                                                                   
+         Species Boundary Conditions   Specified Flux (Mass)/Specified Flux (Mass)                                                
+                                       (((constant . 0) (profile  )) ((constant . 0) (profile  )) ((constant . 0) (profile  )))   
+
+      vent_bottom
+
+         Condition                     Value                                                                                      
+         ----------------------------------------------------------------------------------------------------------------------
+         Material Name                 aluminum                                                                                   
+         Thermal BC Type               Heat Flux                                                                                  
+         Wall Motion                   Stationary Wall                                                                            
+         Shear Boundary Condition      No Slip                                                                                    
+         Wall Surface Roughness        Standard                                                                                   
+         Species Boundary Conditions   Specified Flux (Mass)/Specified Flux (Mass)                                                
+                                       (((constant . 0) (profile  )) ((constant . 0) (profile  )) ((constant . 0) (profile  )))   
+
+</BoundaryConditions>
+
+<SolverSettings>
+Solver Settings
+---------------
+
+   Equations
+
+      Equation     Solved   
+      -------------------
+      Flow         yes      
+      Turbulence   yes      
+      h2           yes      
+      h2o          yes      
+      o2           yes      
+      Energy       yes      
+
+   Numerics
+
+      Numeric                         Enabled   
+      ---------------------------------------
+      Absolute Velocity Formulation   yes       
+
+   Unsteady Calculation Parameters
+
+                                        
+      -------------------------------
+      Number of Time Steps       2000   
+      Time Step Size [s]         0.01   
+      Max Iterations/Time Step   20     
+
+   Under-Relaxation Factors
+
+      Variable                    Relaxation Factor   
+      ---------------------------------------------
+      Pressure                    0.3                 
+      Density                     1                   
+      Body Forces                 1                   
+      Momentum                    0.7                 
+      Turbulent Kinetic Energy    0.8                 
+      Specific Dissipation Rate   0.8                 
+      Turbulent Viscosity         1                   
+      h2                          1                   
+      h2o                         1                   
+      o2                          1                   
+      Energy                      1                   
+
+   Linear Solver
+
+      Variable                    Solver Type   Termination Criterion   Residual Reduction Tolerance   
+      ----------------------------------------------------------------------------------------------
+      Pressure                    V-Cycle       0.1                                                    
+      X-Momentum                  Flexible      0.1                     0.7                            
+      Y-Momentum                  Flexible      0.1                     0.7                            
+      Z-Momentum                  Flexible      0.1                     0.7                            
+      Turbulent Kinetic Energy    Flexible      0.1                     0.7                            
+      Specific Dissipation Rate   Flexible      0.1                     0.7                            
+      h2                          Flexible      0.1                     0.7                            
+      h2o                         Flexible      0.1                     0.7                            
+      o2                          Flexible      0.1                     0.7                            
+      Energy                      F-Cycle       0.1                                                    
+
+   Pressure-Velocity Coupling
+
+      Parameter                     Value   
+      -----------------------------------
+      Type                          PISO    
+      Skewness-Neighbour Coupling   yes     
+      Skewness Correction           1       
+      Neighbour Correction          1       
+
+   Discretization Scheme
+
+      Variable                    Scheme                
+      -----------------------------------------------
+      Pressure                    Second Order          
+      Density                     Second Order Upwind   
+      Momentum                    Second Order Upwind   
+      Turbulent Kinetic Energy    Second Order Upwind   
+      Specific Dissipation Rate   Second Order Upwind   
+      h2                          Second Order Upwind   
+      h2o                         Second Order Upwind   
+      o2                          Second Order Upwind   
+      Energy                      Second Order Upwind   
+
+   Solution Limits
+
+      Quantity                                 Limit    
+      -----------------------------------------------
+      Minimum Absolute Pressure [Pa]           1        
+      Maximum Absolute Pressure [Pa]           5e+10    
+      Minimum Static Temperature [K]           1        
+      Maximum Static Temperature [K]           5000     
+      Minimum Turb. Kinetic Energy [m^2/s^2]   1e-14    
+      Minimum Spec. Dissipation Rate [s^-1]    1e-20    
+      Maximum Turb. Viscosity Ratio            100000   
+
+</SolverSettings>
+
+</FluentXMLReport>
